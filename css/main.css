@@ -33,8 +33,76 @@
 
 /* -------- specificity ---------- */
 
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -65,7 +133,6 @@ p {
     margin: 0;
     font-size: 15px;
     font-weight: 400;
-
 }
 
 h1,
@@ -86,6 +153,7 @@ h4 {
 h3 {
     font-family: 'Natasha-700';
     font-size: 22px;
+    margin-top:0;
 }
 
 h2 {
@@ -98,7 +166,6 @@ h5 {
     font-family:  'MuseoSansCyrl-700';
     font-size: 15px;
     text-transform: uppercase;
-
 }
 
 ul,
@@ -116,7 +183,6 @@ li {
     background-size: cover;
     background-attachment: fixed;
     background-position: top;
-    
 }
 .header {
     display: flex;
@@ -152,7 +218,7 @@ li {
     display: flex;
 }
 .header__menu-item {
-    padding-right: 25px;
+    margin-right: 25px;
     font-size:15px;
 }
 
@@ -160,14 +226,9 @@ li {
     color: #000000;
     transition: 0.7s;
 }
-.header__menu-item> :not(:last-child) {
-    padding-right: 25px;
-}
-
 .header__email {
     font-size: 13px;
     font-family: MuseoSansCyrl-300;
-
 }
 
 .header__foreword{
@@ -183,23 +244,27 @@ li {
     font-family: 'Natasha-700';
     font-size: 49px;
     margin-bottom: 19px;
+    text-align: center;
 
 }
 .header__foreword-text{
     font-family: 'MuseoSansCyrl-300';
     font-size: 29px;
     margin-bottom: 261px;
-
+    text-align: center;
 }
 .header__foreword-symbol{
     border: 1px solid #FFF;
     border-radius: 50%;
     width: 62px;
-    height: 87px;
+    height: 62px;
     font-size: 18px;
-    padding: 8px 15px 11px 16px;
-    cursor: pointer;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
 }
+
 
 /* about me section */
 
@@ -211,7 +276,7 @@ li {
     justify-content: space-between;
 }
 
-.about-me-section__main-title{
+.about-me__main-title{
     margin-bottom: 69px;
 }
 .about-me-section__background{
@@ -222,6 +287,11 @@ li {
    color: rgba(34, 36, 27, 0.66);
    margin-bottom: 49px;
 }
+
+.about-me-section__title-сall{
+    
+
+}
 .about-me-section__texts{
 
 }
@@ -231,7 +301,7 @@ li {
 }
 
 .about-me-section__texts>  :not(:last-child) {
-    padding-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .about-me-section__progress-relations {
@@ -247,6 +317,7 @@ li {
     display: flex;
     text-align: center;
     justify-content: space-around;
+    margin-bottom: 110px;
 }
 .about-me-section__merit{
     max-width: 109px;
@@ -310,17 +381,15 @@ li {
 .about-me-section__links-write{
     display: flex;
     justify-content: space-between;
-
 }
 
 .about-me-section__links>:not(:last-child){
-    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 .about-me-section__link{
     font-size:14px;
     font-family: 'MuseoSansCyrl-300';
-    font-weight: 400;
-    
+    font-weight: 400; 
 }
 
 
@@ -336,12 +405,9 @@ li {
     font-weight: 400;
     font-size: 14px;
     margin-top: 26px;
-
 }
 
 .about-me-section__write p{
-    
-
 }
 .about-me-section__image{
     background: #C6D6BB;
@@ -357,22 +423,29 @@ li {
     padding: 28px 0 48px;
 }
 .skills{
-    max-width: 911px;
-    width: 100%;
+    
+}
+.skills-section__skills {
+    margin-bottom: 60px;
 }
 
-.skills-section__title{
-    padding-left: 32px;
-}
 .skills-section__experiences{
     display: flex;
-    justify-content: space-around;
-    margin-top: 60px;
+    justify-content: space-around; 
+}
+
+.skills-section__experiences >:not(:last-child) {
+    margin-right:49px;
 }
 
 .skills-section__experience{
     display:flex;
     align-items: center;
+}
+
+.skills-section__experience >:not(:last-child){
+    margin-right:26px;
+
 }
 .skills-section__number{
     width:822px;
@@ -385,7 +458,6 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-   
 }
 
 .skills-section__number:after{
@@ -399,12 +471,8 @@ li {
 
 .skills-section__title{
     color:#000000;
-    padding-left: 32px;
 }
 
-.skills-section__title> :not(:last-child) {
-    margin-left: 32px;
-}
 
 /* JOB SECTION */
 
@@ -476,4 +544,197 @@ li {
     font-size: 11px;
     text-transform: uppercase;  
 }
-            
+
+
+            /* MEDIA QUERiES */
+   
+/* 992-1200 */
+
+@media screen and (max-width: 1200px) {
+   
+
+}
+
+/* 768-992 */
+@media screen and (max-width: 992px) {
+    .container {
+        width: 700px;
+    }
+    .about-me-section__background, .about-me-section__progress-relations {
+        width: 45%;
+    }
+    .jobs__list-wrapp {
+        width:30%;
+    }
+    .jobs__image {
+        width: 100%;
+    }
+    .about-me-section__write {
+        margin-left: 25px;
+    }
+    .about-me-section__image {
+        margin-left: 20px;
+    }
+                               
+}
+
+/* 576-768 */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 520px;
+    }
+    .skills-section__experiences >:not(:last-child) {
+        margin-right: 10px;
+    }
+    .skills-section__experience >:not(:last-child) {
+        margin-right: 13px;
+    }
+
+    .about-me {
+        flex-direction: column;
+    }
+
+    .about-me-section__background {
+        width: 100%;
+        max-width:508px;
+    }
+
+    .about-me-section__progress-relations {
+        width: 100%;
+        max-width: 508px;
+    }
+}
+
+/* 320-576 */
+@media screen and (max-width: 576px) {
+    .container {
+        width: 90%;
+    }
+    
+    .header__logo-menu {
+        margin-bottom: 51px;
+        font-size: 13px;
+    }
+    .header__logo-one-part {
+        font-size: 13px;
+
+    }
+    .header__logo-two-part {
+        font-size: 13px;
+
+    }
+
+    .header__logo {
+        font-size: 13px;
+    }
+
+    .header__nav {
+        margin-left: 15px;
+    }
+
+    .header__menu-item {
+        margin-right: 8px;
+        font-size: 9px;
+    }
+
+    .header__email {
+        font-size: 7px;
+    }
+
+    .header__foreword-title {
+        font-size: 37px;
+    }
+
+    .header__foreword-text {
+        margin-bottom: 68px;
+    }
+
+    .about-me-section__merits {
+        margin-bottom: 45px;
+    }
+
+    .skills-section {
+        padding: 27px 0 15px;
+    }
+
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .skills-section__experiences {
+        flex-direction: column;
+    }
+
+    .skills-section__experience {
+
+    }
+
+    .skills-section__experience {
+        margin-bottom: 17px;
+       
+    }
+
+    .about-me-section__links-write {
+        /* flex-direction: column; */
+    }
+
+    .about-me-section__image {
+        background: #C6D6BB;
+        width: 20px;
+        height: 20px;
+        padding: 10px;
+        border: 1px solid #C6D6BB;
+        border-radius: 50%;
+    }
+
+    .jobs-section {
+        padding: 12px 0 14px;
+    }
+
+    .jobs__list{
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .jobs__list-wrapp {
+        width:60%;
+        margin-bottom:5px;
+    }
+    .jobs__image {
+        width: 100%;
+    }
+    .skills-section__skills {
+        margin-bottom: 30px;
+    }
+    .skills-section__experiences {
+        display: flex;
+        display: contents;
+    }
+    
+    .skills-section__experiences >:not(:last-child) {
+        margin-right: auto;
+    }
+    .skills-section__experience {
+        display: flex;
+        margin-right: 20px;
+    }   
+
+    .about-me__main-title {
+        margin-bottom: 40px;
+    }
+
+    .about-me-section__texts>  :not(:last-child) {
+        margin-bottom: 0px;
+    }
+
+    .about-me-section__texts {
+        margin-bottom: 20px;
+    }
+
+    .about-me-section__relations {
+        margin-top: 20px;
+    }
+
+
+}
